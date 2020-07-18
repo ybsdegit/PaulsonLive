@@ -33,8 +33,16 @@ public class FinalOperation {
 
         // int result = stream.sum();
         // long result = stream.count();
-        double result = stream.average().getAsDouble();
-        System.out.println(result);
+        // double result = stream.average().getAsDouble();
+        // System.out.println(result);
+
+        // 对流中的数据进行分析
+        IntSummaryStatistics intSummaryStatistics = stream.summaryStatistics();
+        System.out.println("max = " + intSummaryStatistics.getMax());
+        System.out.println("min = " + intSummaryStatistics.getMin());
+        System.out.println("sum = " + intSummaryStatistics.getSum());
+        System.out.println("average = " + intSummaryStatistics.getAverage());
+        System.out.println("count = " + intSummaryStatistics.getCount());
     }
 
 
