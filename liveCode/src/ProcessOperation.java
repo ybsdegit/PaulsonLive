@@ -93,6 +93,20 @@ public class ProcessOperation {
     }
 
     /**
+     * 中间操作：flatmap
+     * 扁平化映射：一般用在map映射完成后，流中的数据是一个容器，而我们需要对容器中的数据进行处理
+     * 此时使用扁平化映射
+     */
+    public static void flatmapUsage() {
+        String[] array = {"hello", "world"};
+        Stream<String> stream = Arrays.stream(array);
+        // stream.map(String::toCharArray).forEach(e -> System.out.println(Arrays.toString(e)));
+        stream.map(s -> s.split(""))
+                .flatMap(Arrays::stream)
+                .forEach(System.out::println);
+    }
+
+    /**
      * 读取数据源
      *
      * @return 从数据源中读取到的数据
@@ -115,20 +129,6 @@ public class ProcessOperation {
         );
         return arrayList.stream();
 
-    }
-
-    /**
-     * 中间操作：flatmap
-     * 扁平化映射：一般用在map映射完成后，流中的数据是一个容器，而我们需要对容器中的数据进行处理
-     * 此时使用扁平化映射
-     */
-    public static void flatmapUsage() {
-        String[] array = {"hello", "world"};
-        Stream<String> stream = Arrays.stream(array);
-        // stream.map(String::toCharArray).forEach(e -> System.out.println(Arrays.toString(e)));
-        stream.map(s -> s.split(""))
-                .flatMap(Arrays::stream)
-                .forEach(System.out::println);
     }
 
     /**
